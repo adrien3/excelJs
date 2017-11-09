@@ -12,6 +12,8 @@ workbook.xlsx.readFile('ENGIE_TEMPLATE_manyPages.xlsx')
 			var column 			= worksheet.getColumn("W");
 			var id_new_column 	= 22;
 			var row 			= worksheet.getRow(2);
+			var file_name 		= 'new.xlsx';
+			var col_name 		= 'Nom du config'
 			var formule 		= ['index!$A$2:$A$3'];
 			var begin_data 		= 3;
 			var n_col_add 		= 40;
@@ -21,7 +23,7 @@ workbook.xlsx.readFile('ENGIE_TEMPLATE_manyPages.xlsx')
 			for (let i = 1; i <= n_col_add; i++) {
 				id_new_column = id_new_column + 1;
 				column._number = id_new_column;
-				row.getCell(id_new_column).value = "Nom du config " + i;
+				row.getCell(id_new_column).value = col_name + ' ' + i;
 
 				for ( let j = begin_data; j < n_row_add; j++) {
 					let newRow = worksheet.getRow(j);
@@ -41,5 +43,5 @@ workbook.xlsx.readFile('ENGIE_TEMPLATE_manyPages.xlsx')
 
 		}
 
-		return workbook.xlsx.writeFile('new.xlsx');
+		return workbook.xlsx.writeFile(file_name);
 	});
